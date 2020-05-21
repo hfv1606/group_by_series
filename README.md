@@ -44,12 +44,14 @@ Met ander woorden zet de linker tabel om in de rechter tabel
 In eerst instantie dacht ik: gewoon ``group by regio`` en dan ``min(postcode)`` en ``max(postcode)`` berekenen. 
 Maar dat was iets te snel gedacht. De postcode reeks loopt natuurlijk dwars door de regio's heen. 
 Ook een eenvoudige oplossing met ``partion by`` bleek niet mogelijk. 
-Een vraag die intuïtief met SQL lijkt te kunnen, bleek niet eenvoudig met standaard SQL functionaliteit te kunnen.
+Een vraag die intuïtief met SQL lijkt te kunnen, bleek niet eenvoudig met standaard SQL functionaliteit uitgevoerd te kunnen worden.
+
 SQL kan prima een aggregatie uitvoeren op de data als het aggregatieniveau maar van te voren bekend is. 
 Hier was het aggregatieniveau vooraf onbekend en moest uit de data afgeleid worden. 
-Deze vraag kan eenvoudig met procedurele code opgelost worden. Zie de python code onderaan dit artikel. 
-
-In dit artikel zal ik uitleggen hoe dit probleem met SQL opgelost kan worden.
+Deze vraag kan met procedurele code eenvoudig opgelost worden. Zie de python code onderaan dit artikel. 
+Maar in dit artikel zal een oplossing in SQL uitgewerkt worden.
+Daarna wordt uitgewerkt hoe de query getest kan worden.
+En als laatste volgt een voorstel om SQL uit te breiden met deze nieuwe functionaliteit.
 
 Laten we het probleem eens visueel maken. 
 De postcodes (in zwart) kennen een volgorde die door de regio's (in groen) worden onderverdeeld in kleinere series (in rood)
