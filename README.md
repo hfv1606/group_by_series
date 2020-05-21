@@ -1,7 +1,15 @@
-# Group by series
+# Postcodes per regio (RFC SQL standaard)
 
+
+Hoe bepaal je welke postcodeseries er in welke regio liggen? 
+Dat is de vraag welke in dit artikel uitgewerkt wordt. 
+De vraag zal eerst geanalyseerd worden. 
+Daarna zal de oplossing in SQL worden vertaald.
+Vervolgens wordt gekeken hoe deze query moet worden getest.
+Ook wordt er een voostel gedaan om de SQL standaard uit te breiden zodat deze vraag voortaan eenvoudiger beantwoord kan worden.
+
+## Analyse van het probleem
 Van een klant kreeg ik het volgende probleem voorgeschoteld.
-
 Wij hebben Nederland ingedeeld in verschillende regio's. 
 In ons transactiesysteem hebben we de beschikking over een postcode maar niet over de bijbehorende regio. 
 Er is een extern systeem waar we de regio die bij een postcode hoort, kunnen opzoeken.  
@@ -54,23 +62,24 @@ Daarna wordt uitgewerkt hoe de query getest kan worden.
 En als laatste volgt een voorstel om SQL uit te breiden met deze nieuwe functionaliteit.
 
 Laten we het probleem eens visueel maken. 
-De postcodes (in zwart) kennen een volgorde die door de regio's (in groen) worden onderverdeeld in kleinere series (in rood)
+De postcodes (in zwart) kennen een volgorde die door de regio's (in groen) worden onderverdeeld in kleinere series (in rood).
 Wat we willen weten is: wat zijn de postcodes aan het begin en het eind van de korte series? 
 En in werke regio liggen ze? 
 
 ![postcode_regions.gv.png](postcode_regions.gv.png)
 
+## Oplossing in SQL
 Er is geen SQL-functie waarmee dit in één keer declaratief bepaald kan worden. Maar het kan wel met een query. 
 Daarvoor zullen de volgende stappen uitgevoerd moeten worden:
 * sorteer de lijst van alle postcode en regios op postcode   
-* Bepaal het eerst en laatste postcode van een postcodeserie binnen een regio
+* Bepaal de eerst en laatste postcode van een postcodeserie binnen een regio
   * eerste: de regio van de vorige postcode is anders
   * laatste: de regio van de volgende postcode is anders
 * verwijder tussenliggende postcodes
 * voeg eerste en laatste postcodes samen in één record
 
 Er zijn twee bijzonderheden waarmee rekening gehouden moet worden:
-* de allereerste postcode kent geen vorige postcode
+* de allereerste postcode in de lijst kent geen vorige postcode
 * de allerlaatse postcode in de lijst kent geen volgende postcode
 * er zijn postcode series waarbij de eerste postcode gelijk is aan de laatste.
 
@@ -123,9 +132,9 @@ order by startpc
 Om deze code goed te kunnen testen hebben we een testdataset nodig waarin alle mogelijke varianten zitten.
 Hoe bepaal je alle mogelijke varianten? 
 
-De manier waarop de resultaten berekend worden is afhankelijk van de lengte van de postcodeseries. 
-Bij series van 3 of meer postcode lang moeten de tussenliggende postcode verwijderd en 
-de eerste en laatste postcode in de serie worden samengevoegd op één regel. 
+De manier waarop de series berekend worden, is afhankelijk van de lengte van de postcodeseries. 
+Bij series van 3 of meer postcode lang moeten de tussenliggende postcodes verwijderd worden en 
+de eerste en laatste postcode in de serie moeten samengevoegd worden op één regel. 
 Bij series van 2 postcodes hoeven er natuurlijk géén tussenliggende postcodes te worden verwijderd.
 Bij series van 1 postcode hoeven er géén postcodes te worden verwijderd én hoeft er ook niets samengevoegd te worden op één regel.
 
@@ -164,7 +173,7 @@ group by series of postcode over regio
 ;
 ```
 
-## Procedurele oplossing
+## Procedurele oplossing in python
 ```python
 import psycopg2
 from psycopg2.extras import DictCursor
