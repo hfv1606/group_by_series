@@ -56,58 +56,7 @@ De postcodes (in zwart) kennen een volgorde die door de regio's (in groen) worde
 Wat we willen weten is: wat zijn de postcodes aan het begin en het eind van de korte series? 
 En in werke regio liggen ze? 
 
-```plantuml
-digraph Test {
-    rankdir="LR"
-    subgraph cluster1 {
-        label="Regio I"
-        color="green"
-        subgraph cluster11 {
-            label=""
-            style="rounded"
-            color="red"
-            "5432AN" -> "5432AO"
-            "5432AR" 
-        }
-        
-        subgraph cluster12 {
-            label=""
-            style="rounded"
-            color="red"
-            "5432AR" 
-        }
-    }
-
-    "5432AO" -> "5432AP"
-
-    subgraph cluster2 {
-        label="Regio II"
-        color="green"
-        subgraph cluster21 {
-            label=""
-            style="rounded"
-            color="red"
-            "5432AP" -> "5432AQ"
-        }
-    }
-
-    "5432AQ" -> "5432AR"
-
-    "5432AR" -> "5432AS"
-
-    subgraph cluster3 {
-        label="Regio III"
-        color="green"
-        subgraph cluster31 {
-            label=""
-            style="rounded"
-            color="red"
-            "5432AS" 
-        }
-    }
-
-}
-```
+[postcode_regions.gv.png](postcode_regions.gv.png)
 
 Er is geen SQL-functie waarmee dit in één keer declaratief bepaald kan worden. Maar het kan wel met een query. 
 Daarvoor zullen de volgende stappen uitgevoerd moeten worden:

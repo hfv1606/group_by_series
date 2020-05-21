@@ -1,0 +1,50 @@
+digraph Test {
+    rankdir="LR"
+    subgraph cluster1 {
+        label="Regio I"
+        color="green"
+        subgraph cluster11 {
+            label=""
+            style="rounded"
+            color="red"
+            "5432AN" -> "5432AO"
+            "5432AR" 
+        }
+        
+        subgraph cluster12 {
+            label=""
+            style="rounded"
+            color="red"
+            "5432AR" 
+        }
+    }
+
+    "5432AO" -> "5432AP"
+
+    subgraph cluster2 {
+        label="Regio II"
+        color="green"
+        subgraph cluster21 {
+            label=""
+            style="rounded"
+            color="red"
+            "5432AP" -> "5432AQ"
+        }
+    }
+
+    "5432AQ" -> "5432AR"
+
+    "5432AR" -> "5432AS"
+
+    subgraph cluster3 {
+        label="Regio III"
+        color="green"
+        subgraph cluster31 {
+            label=""
+            style="rounded"
+            color="red"
+            "5432AS" 
+        }
+    }
+
+}
