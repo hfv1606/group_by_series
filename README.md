@@ -1,5 +1,5 @@
-% Group by series
-#
+# Group by series
+
 Van een klant kreeg ik het volgende probleem voorgeschoteld.
 
 Wij hebben Nederland ingedeeld in verschillende regio's. 
@@ -56,7 +56,7 @@ De postcodes (in zwart) kennen een volgorde die door de regio's (in groen) worde
 Wat we willen weten is: wat zijn de postcodes aan het begin en het eind van de korte series? 
 En in werke regio liggen ze? 
 
-[postcode_regions.gv.png](postcode_regions.gv.png)
+![postcode_regions.gv.png](postcode_regions.gv.png)
 
 Er is geen SQL-functie waarmee dit in één keer declaratief bepaald kan worden. Maar het kan wel met een query. 
 Daarvoor zullen de volgende stappen uitgevoerd moeten worden:
