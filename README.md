@@ -7,6 +7,7 @@ De vraag zal eerst geanalyseerd worden.
 Daarna zal de oplossing in SQL worden vertaald.
 Vervolgens wordt gekeken hoe deze query moet worden getest.
 Ook wordt er een voostel gedaan om de SQL standaard uit te breiden zodat deze vraag voortaan eenvoudiger beantwoord kan worden.
+Als toegift wordt er ook een procedure oplossing in python uitgwerkt.
 
 ## Analyse van het probleem
 Van een klant kreeg ik het volgende probleem voorgeschoteld.
