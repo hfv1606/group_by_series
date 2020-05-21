@@ -162,7 +162,7 @@ group by series of postcode over regio
 ;
 ```
 
-##Procedurele oplossing
+## Procedurele oplossing
 ```python
 import psycopg2
 from psycopg2.extras import DictCursor
