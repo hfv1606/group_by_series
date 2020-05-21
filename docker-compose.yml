@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+    gbys_postgres:
+        build:
+            context: ./gbys_postgres
+        image: gbys_postgres        
+        environment:
+            - POSTGRES_PASSWORD=postgres
+        container_name: gbys_postgres
+        ports:
+            - "5434:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+
+    gbys_python:
+        depends_on:
+            - gbys_postgres
+        build:
+            context: ./gbys_python
+        image: gbys_python      
+        container_name: gbys_python
+        volumes: 
+            - data_loader_data:/work
+
+volumes:
+    postgres_data:
+    data_loader_data:
+
