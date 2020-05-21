@@ -127,11 +127,11 @@ de eerste en laatste postcode in de serie worden samengevoegd op één regel.
 Bij series van 2 postcodes hoeven er natuurlijk géén tussenliggende postcodes te worden verwijderd.
 Bij series van 1 postcode hoeven er géén postcodes te worden verwijderd én hoeft er ook niets samengevoegd te worden op één regel.
 
-|lengte|verwijderen <br> tussenliggende <br> records |samenvoegen <br> eerste en <br> laatse postcode|start met <br> allereerste <br> postcode|eindig met <br> allerlaatste <br> postcode
-|------|:---------                                  :|:---------                                    :|---                      |---                      |   
-|=1    |                                             |                                               |V                        |V                        |
-|=2    |                                             |     V                                         |V                        |V                        |  
-|\>3   |     V                                       |     V                                         |V                        |V                        |  
+|lengte|verwijderen <br> tussenliggende <br> records |samenvoegen <br> eerste en <br> laatse postcode|start met <br> allereerste <br> postcode|eindig met <br> allerlaatste <br> postcode|
+|------|---------------------------------------------|-----------------------------------------------|----------------------------------------|------------------------------------------|   
+|=1    |                                             |                                               | V                                      | V                                        |
+|=2    |                                             |     V                                         | V                                      | V                                        |  
+|\>3   |     V                                       |     V                                         | V                                      | V                                        |  
 
 Er zijn twee verschillende regio's mogelijk. Regio's met één postcodeserie en regio's met twee of meer postcodeseries. 
 
